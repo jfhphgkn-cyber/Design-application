@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
@@ -47,14 +47,14 @@ jobs:
     - name: Build with Buildozer
       run: |
         buildozer init || true
-        # تعديل إعدادات التكوين ليتناسب مع Flet
         sed -i 's/#requirements = python3,flet/requirements = python3,flet/g' buildozer.spec
         sed -i 's/#package.name = myapp/package.name = tasamim/g' buildozer.spec
         sed -i 's/#package.domain = org.test/package.domain = com.tasamim.app/g' buildozer.spec
         buildozer -v android debug
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: app-debug
         path: bin/*.apk
+        
