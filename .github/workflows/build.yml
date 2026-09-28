@@ -55,7 +55,7 @@ jobs:
         sed -i 's/#requirements = python3,flet/requirements = python3,flet/g' buildozer.spec
         sed -i 's/#package.name = myapp/package.name = tasamim/g' buildozer.spec
         sed -i 's/#package.domain = org.test/package.domain = com.tasamim.app/g' buildozer.spec
-        buildozer -v android debug
+        yes | buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
